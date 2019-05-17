@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         getDependencies();
         setContentView(R.layout.activity_main);
 
-        addFragment();
+        addHomeFragment();
 
     }
 
@@ -38,10 +38,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void addFragment(){
-
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.main_activity_container, new HomeFragment());
-        fragmentTransaction.commit();
+    private void addHomeFragment() {
+        if(getSupportFragmentManager().findFragmentByTag(HomeFragment.TAG) == null){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.container_fragment, HomeFragment.newInstance(), HomeFragment.TAG)
+                    .commit();
+        }
     }
 }

@@ -40,4 +40,10 @@ public class HomeViewModel {
     public NetworkHelper getNetworkHelper() {
         return networkHelper;
     }
+
+    public String getSomeData() {
+        return databaseService.getDummyData()
+                + " : " + networkService.getDummyData()
+                + " : " + networkHelper.isNetworkConnected();
+    }
 }
